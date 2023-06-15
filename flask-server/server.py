@@ -14,6 +14,12 @@ app=Flask(__name__)
 @app.route('/',methods=['GET','POST'])
 def io():
     return render_template('io.html')
+@app.route('/about',methods=['GET','POST'])
+def about():
+    return render_template('about.html')
+@app.route('/howto',methods=['GET','POST'])
+def howto():
+    return render_template('howto.html')
 
 @app.route('/data',methods=['GET','POST'])
 def data():
