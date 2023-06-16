@@ -8,6 +8,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.decomposition import TruncatedSVD
 import plotly.graph_objects as go
 from textblob import TextBlob
+import os
+import openai
 
 app=Flask(__name__)
 
@@ -20,6 +22,9 @@ def about():
 @app.route('/howto',methods=['GET','POST'])
 def howto():
     return render_template('howto.html')
+@app.route('/team',methods=['GET','POST'])
+def team():
+    return render_template('team.html')
 
 @app.route('/data',methods=['GET','POST'])
 def data():
@@ -86,11 +91,22 @@ def data():
 
         fig = go.Figure(data=[go.Pie(labels=labels, values=sizes, textinfo='label+percent', marker=dict(colors=colors))])
         fig.update_layout(title='Sentiment Analysis', showlegend=False)
-    
 
+        dataa=data.head(10).to_json()
+
+        openai.api_key = "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"
+        completion = openai.ChatCompletion.create(
+           model="gpt-3.5-turbo",
+           messages=[
+               {"role": "system", "content": "Your job is to read through a set of product reviews from customers of a product, identify problems with the product and generate suggestions as of how to improve that product. Enumerate your suggestions."},
+               {"role": "user", "content": dataa}
+           ]
+        )
+
+        completion_1=completion.choices[0].message.content
         # Print summary, suggestions, and sentiment percentages
         #print(summary,suggestions,"Sentiment Percentages:",f"Positive: {positive_percentage:.2f}%",f"Neutral: {neutral_percentage:.2f}%",f"Negative: {negative_percentage:.2f}%")
 
-        return render_template("main.html",summary=summary,suggestions=suggestions, t1="Sentiment Percentages:",positive=f"Positive: {positive_percentage:.2f}%",negative=f"Negative: {negative_percentage:.2f}%",neutral=f"Neutral: {neutral_percentage:.2f}%",fig=fig.show())
+        return render_template("main.html",completion_1=completion_1,summary=summary,suggestions=suggestions, t1="Sentiment Percentages:",positive=f"Positive: {positive_percentage:.2f}%",negative=f"Negative: {negative_percentage:.2f}%",neutral=f"Neutral: {neutral_percentage:.2f}%",fig=fig.show())
 if __name__=="__main__":
     app.run(debug=True)

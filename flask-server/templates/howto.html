@@ -1,11 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        background: url("data:image/jpeg;base64,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");
+        background-size: cover;
+      }
+
+      h1 {
+        font-size: 50px;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 20px;
+        line-height: 1.5;
+        margin-bottom: 30px;
+      }
+      .para1 {
+        margin: 20px;
+        padding: 10px;
+        background-color: rgb(195, 199, 240);
+        border-radius: 1rem;
+      }
+
+      /* CSS */
+      .button-54 {
+        font-family: "Open Sans", sans-serif;
+        font-size: 16px;
+        letter-spacing: 2px;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: #000;
+        cursor: pointer;
+        border: 3px solid;
+        padding: 0.25em 0.5em;
+        box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px,
+          4px 4px 0px 0px, 5px 5px 0px 0px;
+        position: relative;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+      }
+
+      .button-54:active {
+        box-shadow: 0px 0px 0px 0px;
+        top: 5px;
+        left: 5px;
+      }
+
+      @media (min-width: 768px) {
+        .button-54 {
+          padding: 0.25em 0.75em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>HOW TO USE</h1>
+    <div class="para1">
+      <p>1. Select the CSV or excel file containing the list of reviews and upload it.</p>
+       <p>2. Click on the Submit button and get your Data analysed</p> 
+        <p>3. VOILA! THATS IT! ITS THAT SIMPLE!!</p><br>
+    </div>
+    <div>
+      <button class="button-54" onclick="window.location.href='/';">
+        go home
+      </button>
+    </div>
+  </body>
 </html>

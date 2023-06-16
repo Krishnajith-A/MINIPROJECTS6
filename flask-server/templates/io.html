@@ -12,6 +12,17 @@
     />
     <title>Document</title>
     <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        background: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgICAcHBw0IBwcHBw0HBwcHBw8ICQcNFREWFiARExMYHSggGBolJx8fITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDysZFRk3LTctKzcrKysrKy0tKzc3LSsrLTcrNy0rKy0rKysrLS0tKy0tKysrKysrKysrKysrK//AABEIAKgBLAMBIgACEQEDEQH/xAAZAAEBAQEBAQAAAAAAAAAAAAABAAIDBQb/xAAZEAEBAQEBAQAAAAAAAAAAAAAAEQESAiH/xAAZAQEBAQEBAQAAAAAAAAAAAAAAAQIDBAX/xAAYEQEBAQEBAAAAAAAAAAAAAAAAEQESAv/aAAwDAQACEQMRAD8A+tST67skkCRiUBSBFFRHEsAtYMOCNYcGNYgcaxnGsA4ViApFVCKRU1jLWM6pxoYcY1CkmQBoI1gSI0Tgw4gg0ER46MUeiuYRhBkmKKAqKAioYtAcKEOYVhwDhxYcRDjWDGhVhWEEilUFI1U1gw4xocaGHGQpJlQDqRcCxHBpNYMaQAKRHkJqKO1c2SUUCaihQIpaCGElQQ5iJRFNYUWY1gxrMKLGhjQRQoqoKKqEUKsOLCzqHCsLIkki4NBCN5gOIoqawYcRENaCDy4oYo3XIRRqIozDDEUEUJWgihJQQorSI5ihKRZjWI4VYsOLDhViKK0iRS1QcRWojiOAiizqxApGsxkNBGoCjiBwjGkQApFjzYo0ma5RmKNJaRmEopBEStIEVCkRUK1YCYikTSOYtWI4swlIijCgJii0BUMWoCo1mLVgwnMMFgDUMRWII3FEVmGGHMRBmGNRRKrMEbijNV5kUaijnWIzE1FCkZhhhi0jMUahi0jEMahhSMxRvkxarEazGsw5hRnMMa5azyVGcw5jWYYUZijcMWoxFG4YtGIo3yYtGIcxvPJzytGcwxvMOYVaxFHSKJUrnFHTlRKVz5PLcOYzulY5PLcMZ30tc+Vy6wRKV5XK5deVyzWnLlcuvK5KOXJ5dOTyVHLk8unJ5KOXJ5deVCjnyeXSHkqVz5azy3yYVGOTy3DCjGYeW4YtRiKNwxaMcqNxRqjMMJi1RDmE5hRZhhMKjMUaRRmKNAIIYSysWYoYWRmKNBEefFGk510jMUaRSCKElSMwwkpBFCSkEMRKQQxVUqcmEVVavJQqq05KCaq8lArSEg5hSE4jmFSIqGFSBNRRc0jKah5aqs5hzGsxqJUrOYmoYiMCNwRKPNVPK5eWvRBVTzp5Kc4KqeVyUmCk8nlaTGamuTwUmMpvk8rSYwnTk8rUc4o6cnkpXOGOnK5WpXOGOnJ5WpXPPJ5dM8nPK1mueeWs8umeWs8lSuWeWs8umeTFpXPk8ukUKlY5PLajVSscnluKFSs8nlpJUZhhqFZgjaB53K5w1V5a9I5XLVVWg5XJqpRcrlU0oooaqVFDyqqVFDBTVooYKqtSGGDpdKkaiZ6VVI2XOmg3TWEtZbqrJKjVLBWjdVYKjVVZiglNVUUKlRUUKE0RFHnJJ5XpqSQVFJRFIKkUqVJJSn6klSmKJKm6YYkrNMMSE3TDEhmqHMSEpiiQUwwJpKYYkqUxQpGaoYkFUUSCmKJKV//Z");
+        background-size: cover;
+      }
       .drop-container {
         position: relative;
         display: flex;
@@ -105,36 +116,20 @@
               d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
             ></path>
           </svg>
-          <span class="ml-3 text-xl">Radium</span>
+          <span class="ml-3 text-xl">ANALYSER</span>
         </a>
         <nav
           class="md:ml-auto flex flex-wrap items-center text-base justify-center"
         >
-          <a class="mr-5 hover:text-gray-900">AUTHORS</a>
-          <a class="mr-5 hover:text-gray-900" href="/about">ABOUT US</a>
+          <a class="mr-5 hover:text-gray-900" href="/team">TEAM</a>
+          <a class="mr-5 hover:text-gray-900" href="/about">ABOUT THE PROJECT</a>
           <a class="mr-5 hover:text-gray-900" href="/howto">HOW TO USE</a>
         </nav>
-        <button
-          class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0"
-        >
-          Button
-          <svg
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            class="w-4 h-4 ml-1"
-            viewBox="0 0 24 24"
-          >
-            <path d="M5 12h14M12 5l7 7-7 7"></path>
-          </svg>
-        </button>
       </div>
     </header>
-    <div class="flex gap-3 pt-9 border-black border m-3 p-5 rounded-xl h-full">
+    <div class="mt-20 flex gap-3 pt-9 border-black border m-3 p-5 rounded-xl h-full">
       <div class="w-1/2 p-2 pl-6 font-bold text-2xl  ">
-        <h1 class="text-center ">PRODUCT REVIEW ANALYSER AND RECOMMENDATION GENERATOR</h1>
+        <h1 class="text-center text-[50px] leading-normal">PRODUCT REVIEW ANALYSER AND RECOMMENDATION GENERATOR</h1>
       </div>
       <form
         class="w-1/2"

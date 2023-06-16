@@ -4,14 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        background: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgICAcHBw0IBwcHBw0HBwcHBw8ICQcNFREWFiARExMYHSggGBolJx8fITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDysZFRk3LTctKzcrKysrKy0tKzc3LSsrLTcrNy0rKy0rKysrLS0tKy0tKysrKysrKysrKysrK//AABEIAKgBLAMBIgACEQEDEQH/xAAZAAEBAQEBAQAAAAAAAAAAAAABAAIDBQb/xAAZEAEBAQEBAQAAAAAAAAAAAAAAEQESAiH/xAAZAQEBAQEBAQAAAAAAAAAAAAAAAQIDBAX/xAAYEQEBAQEBAAAAAAAAAAAAAAAAEQESAv/aAAwDAQACEQMRAD8A+tST67skkCRiUBSBFFRHEsAtYMOCNYcGNYgcaxnGsA4ViApFVCKRU1jLWM6pxoYcY1CkmQBoI1gSI0Tgw4gg0ER46MUeiuYRhBkmKKAqKAioYtAcKEOYVhwDhxYcRDjWDGhVhWEEilUFI1U1gw4xocaGHGQpJlQDqRcCxHBpNYMaQAKRHkJqKO1c2SUUCaihQIpaCGElQQ5iJRFNYUWY1gxrMKLGhjQRQoqoKKqEUKsOLCzqHCsLIkki4NBCN5gOIoqawYcRENaCDy4oYo3XIRRqIozDDEUEUJWgihJQQorSI5ihKRZjWI4VYsOLDhViKK0iRS1QcRWojiOAiizqxApGsxkNBGoCjiBwjGkQApFjzYo0ma5RmKNJaRmEopBEStIEVCkRUK1YCYikTSOYtWI4swlIijCgJii0BUMWoCo1mLVgwnMMFgDUMRWII3FEVmGGHMRBmGNRRKrMEbijNV5kUaijnWIzE1FCkZhhhi0jMUahi0jEMahhSMxRvkxarEazGsw5hRnMMa5azyVGcw5jWYYUZijcMWoxFG4YtGIo3yYtGIcxvPJzytGcwxvMOYVaxFHSKJUrnFHTlRKVz5PLcOYzulY5PLcMZ30tc+Vy6wRKV5XK5deVyzWnLlcuvK5KOXJ5dOTyVHLk8unJ5KOXJ5deVCjnyeXSHkqVz5azy3yYVGOTy3DCjGYeW4YtRiKNwxaMcqNxRqjMMJi1RDmE5hRZhhMKjMUaRRmKNAIIYSysWYoYWRmKNBEefFGk510jMUaRSCKElSMwwkpBFCSkEMRKQQxVUqcmEVVavJQqq05KCaq8lArSEg5hSE4jmFSIqGFSBNRRc0jKah5aqs5hzGsxqJUrOYmoYiMCNwRKPNVPK5eWvRBVTzp5Kc4KqeVyUmCk8nlaTGamuTwUmMpvk8rSYwnTk8rUc4o6cnkpXOGOnK5WpXOGOnJ5WpXPPJ5dM8nPK1mueeWs8umeWs8lSuWeWs8umeTFpXPk8ukUKlY5PLajVSscnluKFSs8nlpJUZhhqFZgjaB53K5w1V5a9I5XLVVWg5XJqpRcrlU0oooaqVFDyqqVFDBTVooYKqtSGGDpdKkaiZ6VVI2XOmg3TWEtZbqrJKjVLBWjdVYKjVVZiglNVUUKlRUUKE0RFHnJJ5XpqSQVFJRFIKkUqVJJSn6klSmKJKm6YYkrNMMSE3TDEhmqHMSEpiiQUwwJpKYYkqUxQpGaoYkFUUSCmKJKV//Z");
+        background-size: cover;
+        }
+        .button-54 {
+        font-family: "Open Sans", sans-serif;
+        font-size: 16px;
+        letter-spacing: 2px;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: #000;
+        cursor: pointer;
+        border: 3px solid;
+        padding: 0.25em 0.5em;
+        box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px,
+          4px 4px 0px 0px, 5px 5px 0px 0px;
+        position: relative;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+      }
+
+      .button-54:active {
+        box-shadow: 0px 0px 0px 0px;
+        top: 5px;
+        left: 5px;
+      }
+
+      @media (min-width: 768px) {
+        .button-54 {
+          padding: 0.25em 0.75em;
+        }
+      }
+    </style>
 </head>
 <body>
-    {{summary}}<br>
-    {{suggestions}} <br>
-    {{t1}} <br>
-    {{positive}} <br>
-    {{negative}} <br>
-    {{neutral}} <br>
-    {{fig}} <br>
+    <div>
+
+       <p class="p-6">{{completion_1}}</p> <br>
+        <h1 style="font-size: 30px;">{{t1}}</h1> <br>
+        <h2 style="font-size: 25px;">{{positive}} </h2><br>
+        <h3 style="font-size: 25px;">{{negative}}</h3> <br>
+        <h4 style="font-size: 25px;">{{neutral}} </h4><br>
+        {{fig}}<br>
+    </div>  
+    <div>
+        <button class="button-54" onclick="window.location.href='/';">
+          go home
+        </button>
+    </div>
 </body>
 </html>
