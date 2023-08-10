@@ -10,6 +10,12 @@ import plotly.graph_objects as go
 from textblob import TextBlob
 import os
 import openai
+import re
+import json
+from dotenv import load_dotenv,dotenv_values
+
+
+load_dotenv()
 
 app=Flask(__name__)
 
@@ -85,28 +91,46 @@ def data():
         negative_percentage = (sum(sentiment < 0 for sentiment in sentiments) / len(sentiments)) * 100
 
         # Step 6: Plot Pie Chart using Plotly
+        #labels = ['Positive', 'Neutral', 'Negative']
+        #sizes = [positive_percentage, neutral_percentage, negative_percentage]
+        #colors = ['#00ff00', '#999999', '#ff0000']
+
+        #fig = go.Figure(data=[go.Pie(labels=labels, values=sizes, textinfo='label+percent', marker=dict(colors=colors))])
+        #fig.update_layout(title='Sentiment Analysis', showlegend=False)
         labels = ['Positive', 'Neutral', 'Negative']
         sizes = [positive_percentage, neutral_percentage, negative_percentage]
-        colors = ['#00ff00', '#999999', '#ff0000']
+        colors = ['#ADD8E6', '#FFFF99', '#90EE90']  # Light Blue, Yellow, Light Green
 
         fig = go.Figure(data=[go.Pie(labels=labels, values=sizes, textinfo='label+percent', marker=dict(colors=colors))])
-        fig.update_layout(title='Sentiment Analysis', showlegend=False)
-
+        fig.update_layout(
+            title='Sentiment Analysis',
+            showlegend=False,
+            font=dict(size=23, color='black')  # Adjust font size and color
+        )
+        fig.show()
         dataa=data.head(10).to_json()
 
-        openai.api_key = "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"
+        openai.api_key = os.getenv("OPENAI_API_KEY")
         completion = openai.ChatCompletion.create(
            model="gpt-3.5-turbo",
            messages=[
-               {"role": "system", "content": "Your job is to read through a set of product reviews from customers of a product, identify problems with the product and generate suggestions as of how to improve that product. Enumerate your suggestions."},
+               {"role": "system", "content": "Your job is to read through a set of product reviews from customers of a product, identify problems with the product and generate suggestions as of how to improve that product. Enumerate the problems found in the products and your suggestions. End each sentence of the generated output with a simple % sign"},
                {"role": "user", "content": dataa}
            ]
         )
 
         completion_1=completion.choices[0].message.content
+        delim=r'[%:\n]'
+        k=re.split(delim,completion_1)
+        #print(k)
+        #json_data=json.dumps(k)
+        #print(json_data)
+        for i in k:
+            if  not i:
+                k.remove(i)
         # Print summary, suggestions, and sentiment percentages
-        #print(summary,suggestions,"Sentiment Percentages:",f"Positive: {positive_percentage:.2f}%",f"Neutral: {neutral_percentage:.2f}%",f"Negative: {negative_percentage:.2f}%")
+        # print(summary,suggestions,"Sentiment Percentages:",f"Positive: {positive_percentage:.2f}%",f"Neutral: {neutral_percentage:.2f}%",f"Negative: {negative_percentage:.2f}%")
 
-        return render_template("main.html",completion_1=completion_1,summary=summary,suggestions=suggestions, t1="Sentiment Percentages:",positive=f"Positive: {positive_percentage:.2f}%",negative=f"Negative: {negative_percentage:.2f}%",neutral=f"Neutral: {neutral_percentage:.2f}%",fig=fig.show())
+        return render_template("main.html",completion_1=k,summary=summary,suggestions=suggestions, t1="Sentiment Percentages:",positive=f"Positive: {positive_percentage:.2f}%",negative=f"Negative: {negative_percentage:.2f}%",neutral=f"Neutral: {neutral_percentage:.2f}%",fig=fig.show())
 if __name__=="__main__":
     app.run(debug=True)
